@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
+    <style>
+        .calculator {
+            width: 300px;
+            margin: 0 auto;
+            border: 2px solid #000080;
+            padding: 10px;
+            border-radius: 10px;
+            background-color: #f0f0f0;
+        }
+        .calculator input[type="text"] {
+            width: calc(100% - 20px);
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            border: none;
+            background-color: #eaeaea;
+            text-align: right;
+            font-size: 20px;
+        }
+        .calculator button {
+            width: 50px;
+            height: 50px;
+            margin: 5px;
+            font-size: 20px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+        }
+        .operator {
+            color: #ffffff;
+        }
+        .operator-circle {
+            background-color: #000080;
+        }
+        .equals {
+            background-color: orange;
+            color: white;
+        }
+        .clear {
+            color: white;
+            background-color: #000080;
+        }
+        .extra-buttons button {
+            width: 30px;
+        }
+        footer {
+            margin-top: 20px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body style="background-color: #f0f0f0;">
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title text-center">Calculadora</h5>
+                        <div class="calculator">
+                            <input type="text" id="display" class="form-control mb-3" placeholder="0" readonly>
+                            <div class="row mb-3">
+                                <button class="col-3 offset-1 btn btn-dark" onclick="clearDisplay()">AC</button>
+                                <button class="col-3 btn btn-dark" onclick="addToDisplay('(')"> ( </button>
+                                <button class="col-3 btn btn-dark" onclick="addToDisplay(')')"> ) </button>
+                                <button class="col-3 btn btn-dark operator operator-circle" onclick="addToDisplay('%')">%</button>
+                            </div>
+                            <div class="row mb-3">
+                                <button class="col-2 offset-1 btn btn-dark" onclick="addToDisplay('7')">7</button>
+                                <button class="col-2 btn btn-dark" onclick="addToDisplay('8')">8</button>
+                                <button class="col-2 btn btn-dark" onclick="addToDisplay('9')">9</button>
+                                <button class="col-2 btn btn-dark operator operator-circle" onclick="addToDisplay('/')">/</button>
+                            </div>
+                            <div class="row mb-3">
+                                <button class="col-2 offset-1 btn btn-dark" onclick="addToDisplay('4')">4</button>
+                                <button class="col-2 btn btn-dark" onclick="addToDisplay('5')">5</button>
+                                <button class="col-2 btn btn-dark" onclick="addToDisplay('6')">6</button>
+                                <button class="col-2 btn btn-dark operator operator-circle" onclick="addToDisplay('*')">*</button>
+                            </div>
+                            <div class="row mb-3">
+                                <button class="col-2 offset-1 btn btn-dark" onclick="addToDisplay('1')">1</button>
+                                <button class="col-2 btn btn-dark" onclick="addToDisplay('2')">2</button>
+                                <button class="col-2 btn btn-dark" onclick="addToDisplay('3')">3</button>
+                                <button class="col-2 btn btn-dark operator operator-circle" onclick="addToDisplay('-')">-</button>
+                            </div>
+                            <div class="row mb-3">
+                                <button class="col-2 offset-1 btn btn-dark" onclick="addToDisplay('0')">0</button>
+                                <button class="col-2 btn btn-dark" onclick="addToDisplay('.')">.</button>
+                                <button class="col-2 btn btn-warning equals" onclick="calculate()">=</button>
+                                <button class="col-2 btn btn-dark operator operator-circle" onclick="addToDisplay('+')">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js" integrity="sha384-mbMgPr5a6aV3GV/njQ5x0zvjtKoLWI/pu4/7WPgI95Nw2jQ2ysHSeL/qr67o7AgD" crossorigin="anonymous"></script>
+
+    <footer>CarlosDev</footer>
+
+    <script>
+        function addToDisplay(value) {
+            document.getElementById('display').value += value;
+        }
+
+        function calculate() {
+            try {
+                document.getElementById('display').value = eval(document.getElementById('display').value);
+            } catch(err) {
+                document.getElementById('display').value = 'Erro';
+            }
+        }
+
+        function clearDisplay() {
+            document.getElementById('display').value = '';
+        }
+    </script>
+</body>
+</html>
